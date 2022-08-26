@@ -32,8 +32,8 @@ begin
     select @roomId4 = Id from dbo.ProductTypes where Title = 'Other Antiques';
 
     Insert into dbo.Products(Title, [Description], Price, Quantity, ProductTypeId, ImgName)
-    values ('Black Ceramic Bowl', 'An antique black ceramic bowl made of sustainable material.', 50, 1, @roomId1, 'Ceramics001.jpg'),
-    ('Diamond White Gold Ring', 'A half karat diamond on a 10k gold necklace', 1500, 1, @roomId2, 'Jewelries001.jpg'),
-    ('Stainless Rolex', 'A Stainless dial watch with black leather arm', 1000, 1, @roomId3, 'Watches001.jpg'),
-    ('Antique Lamp', 'An antique lamp made in the 19th century', 200, 1, @roomId4, 'OtherAntiques001.jpg');
+    values ('Black Ceramic Bowl', 'An antique black ceramic bowl made of sustainable material.', 50, 1, @roomId1, 'Ceramics001.jpg', 0, 0),
+    ('Diamond White Gold Ring', 'A half karat diamond on a 10k gold necklace', 1500, 1, @roomId2, 'Jewelries001.jpg', 0, 0),
+    ('Stainless Rolex', 'A Stainless dial watch with black leather arm', 1000, 1, @roomId3, 'Watches001.jpg', 0, 0),
+    ('Antique Lamp', 'An antique lamp made in the 19th century', 200, 1, @roomId4, 'OtherAntiques001.jpg', 0, 0);
 end

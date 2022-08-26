@@ -7,8 +7,13 @@
     [Quantity] INT NOT NULL, 
     [ProductTypeId] INT NOT NULL, 
     [ImgName] NVARCHAR(50) NOT NULL, 
+    [IsOrdered] BIT NOT NULL DEFAULT 0, 
+    [IsSold] BIT NOT NULL DEFAULT 0, 
     CONSTRAINT [FK_Products_ProductTypes] FOREIGN KEY ([ProductTypeId]) REFERENCES ProductTypes(Id)
 )
 
 --How to store image for the project
 --https://stackoverflow.com/questions/17361812/best-way-to-store-images-for-a-website
+
+--modification 1 > add IsOrdered and IsSold -- either need to set the default value or set it to nullable 
+--otherwise it won't update since the table has existing records.
