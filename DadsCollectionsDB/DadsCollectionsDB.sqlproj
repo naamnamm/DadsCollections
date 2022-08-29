@@ -68,7 +68,7 @@
     <Build Include="dbo\Tables\Customers.sql" />
     <Build Include="dbo\Tables\Orders.sql" />
     <Build Include="dbo\Tables\OrderProducts.sql" />
-    <Build Include="dbo\StoredProcedures\spProducts_GetAll.sql" />
+    <Build Include="dbo\StoredProcedures\spProducts_GetAvailableProducts.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="DadsCollectionsDB.refactorlog" />
