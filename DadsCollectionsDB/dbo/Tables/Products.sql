@@ -12,6 +12,8 @@
     CONSTRAINT [FK_Products_ProductTypes] FOREIGN KEY ([ProductTypeId]) REFERENCES ProductTypes(Id)
 )
 
+--I'll just leave IsOrdered alone.
+
 --How to store image for the project
 --https://stackoverflow.com/questions/17361812/best-way-to-store-images-for-a-website
 
