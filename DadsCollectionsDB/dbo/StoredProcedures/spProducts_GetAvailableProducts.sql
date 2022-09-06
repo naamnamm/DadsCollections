@@ -5,14 +5,16 @@ AS
 begin
 	set nocount on;
 
-	select [Id], [Title], [Description], [Price], [Quantity], [ProductTypeId], [ImgName], [IsOrdered], [IsSold]
-	from dbo.Products;
+	select p.*, op.*
+	from dbo.Products p
+	inner join dbo.OrderProducts op on p.id != op.ProductId
 
+	-- if product is not in the OrderProducts table 
 
 end
 
 
---8.29.22 -- to drop IsOrdered col
+--not all products are available if some product is ordered, those should not be available.
 
 
 -- Solution 1

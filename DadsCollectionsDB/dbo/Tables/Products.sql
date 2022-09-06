@@ -7,7 +7,6 @@
     [Quantity] INT NOT NULL, 
     [ProductTypeId] INT NOT NULL, 
     [ImgName] NVARCHAR(50) NOT NULL, 
-    [IsOrdered] BIT NOT NULL DEFAULT 0, 
     [IsSold] BIT NOT NULL DEFAULT 0, 
     CONSTRAINT [FK_Products_ProductTypes] FOREIGN KEY ([ProductTypeId]) REFERENCES ProductTypes(Id)
 )

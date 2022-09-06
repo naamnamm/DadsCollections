@@ -19,7 +19,7 @@ namespace DadsCollectionsLibrary.Data
 
         public List<ProductModel> GetProducts()
         {
-            return _db.LoadData<ProductModel, dynamic>("dbo.spProducts_GetAll", new {}, connectionStringName, true);
+            return _db.LoadData<ProductModel, dynamic>("dbo.spProducts_GetAvailableProducts", new {}, connectionStringName, true);
         }
     }
 }
