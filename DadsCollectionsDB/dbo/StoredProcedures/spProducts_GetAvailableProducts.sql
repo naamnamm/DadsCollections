@@ -5,11 +5,11 @@ AS
 begin
 	set nocount on;
 
-	select p.*, op.*
+	select p.*
 	from dbo.Products p
-	inner join dbo.OrderProducts op on p.id != op.ProductId
 
-	-- if product is not in the OrderProducts table 
+	-- if Product is not on OrderProducts AND Product.IsSold = false
+	inner join dbo.OrderProducts op on p.id != op.ProductId AND p.IsSold = 0	
 
 end
 

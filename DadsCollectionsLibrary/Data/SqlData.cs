@@ -21,5 +21,20 @@ namespace DadsCollectionsLibrary.Data
         {
             return _db.LoadData<ProductModel, dynamic>("dbo.spProducts_GetAvailableProducts", new {}, connectionStringName, true);
         }
+
+        public void CreateOrder(string firstName, string lastName, string email, int productId)
+        {
+            // info needed from the frontend
+            //get customer info
+            //get Id of the product ordered
+
+            //load customer
+            CustomerModel customer = _db.LoadData<CustomerModel, dynamic> ("dbo.spCustomers_Insert", new { firstName, lastName, email}, connectionStringName, true).First();
+
+
+
+            //save order
+
+        }
     }
 }
