@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace DadsCollectionsLibrary.Models
 {
-    internal class OrderModel
+    public class OrderModel
     {
+        public int Id { get; set; } 
+        public int CustomerId { get; set; } 
+        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
+
+        public string Status { get; set; }
+
+        public decimal TotalCost { get; set; }  
     }
 }
