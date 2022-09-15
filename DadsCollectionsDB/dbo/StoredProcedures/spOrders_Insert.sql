@@ -1,13 +1,14 @@
 ﻿CREATE PROCEDURE [dbo].[spOrders_Insert]
 	@customerId int,
 	@status nvarchar(20),
-	@totalCost money
+	@totalCost money,
+	@orderProductIdList varchar(500)
 AS
 begin
 	set nocount on;
 
-	insert into dbo.Orders(CustomerId, [Status], TotalCost)
-	values (@customerId, @status, @totalCost)
+	insert into dbo.Orders(CustomerId, [Status], TotalCost, orderProductIdList)
+	values (@customerId, @status, @totalCost, @orderProductIdList)
 
 	--returned the inserted record (orderId)
 	SELECT SCOPE_IDENTITY()
