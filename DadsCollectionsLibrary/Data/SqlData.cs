@@ -14,6 +14,7 @@ namespace DadsCollectionsLibrary.Data
     {
         private readonly ISqlDataAccess _db;
         private const string connectionStringName = "SqlDB";
+        private decimal totalCost = 0;
 
         public SqlData(ISqlDataAccess db)
         {
@@ -25,7 +26,7 @@ namespace DadsCollectionsLibrary.Data
             return _db.LoadData<ProductModel, dynamic>("dbo.spProducts_GetAvailableProducts", new { }, connectionStringName, true);
         }
 
-        public int CreateOrder(string firstName, string lastName, string email, List<int> orderProductIdList)
+        public int CreateOrder(string firstName, string lastName, string email, decimal totalCost, List<int> orderProductIdList)
         {
             //1. load customer >> customerModel: {Id, FirstName, LastName, Email}
             CustomerModel customer = _db.LoadData<CustomerModel, dynamic>("dbo.spCustomers_Insert",
@@ -33,20 +34,29 @@ namespace DadsCollectionsLibrary.Data
                                                                           connectionStringName,
                                                                           true).First();
 
-            //2.1 save data to Orders >> OrderModel: {Id, CustomerId, CreatedDate, Status, TotalCost, orderProductIdList = {1,2,3}}
+            //2. save data to Orders >> OrderModel: {Id, CustomerId, CreatedDate, Status, TotalCost, orderProductIdList = {1,2,3}}
             OrderModel order = _db.LoadData<OrderModel, dynamic>("dbo.spOrders_Insert",
-                                                                new { CustomerId = customer.Id, Status = "open", TotalCost = 20, orderProductIdList = string.Join(",", orderProductIdList) },
+                                                                new { CustomerId = customer.Id, Status = "open", TotalCost = totalCost, orderProductIdList = string.Join(",", orderProductIdList) },
                                                                 connectionStringName, 
                                                                 true).First();
+            
 
-
-            //2.2 for each order product save data to OrderProducts >> OrderProductModel: {Id, ProductId, OrderId}
+            //3. for each order product save data to OrderProducts >> OrderProductModel: {Id, ProductId, OrderId}
             foreach (int orderProductId in orderProductIdList)
             {
                 _db.SaveData("dbo.spOrderProducts_Insert", new { ProductId = orderProductId, OrderId = order.Id }, connectionStringName, true);
             }
 
             return order.Id; // which says this order ID has been created on front-end
+        }
+
+        public void SearchOrder(string email) // search order from destop application
+        {
+            OrderModel order = _db.LoadData<OrderModel, dynamic>("dbo.spOrders_Get",
+                                                                          new { email },
+                                                                          connectionStringName,
+                                                                          true).First();
+            
         }
 
         public int UpdateOrderStatus(int orderId) // update from destop application
