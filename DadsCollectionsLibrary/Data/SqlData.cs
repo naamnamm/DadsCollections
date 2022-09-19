@@ -50,21 +50,22 @@ namespace DadsCollectionsLibrary.Data
             return order.Id; // which says this order ID has been created on front-end
         }
 
-        public void SearchOrder(string email) // search order from destop application
+        public List<OrderFullModel> SearchOrders(string email) // search order from destop application
         {
-            OrderModel order = _db.LoadData<OrderModel, dynamic>("dbo.spOrders_Get",
+            return _db.LoadData<OrderFullModel, dynamic>("dbo.spOrders_Search",
                                                                           new { email },
                                                                           connectionStringName,
-                                                                          true).First();
-            
+                                                                          true);           
         }
 
-        public int UpdateOrderStatus(int orderId) // update from destop application
+        public int UpdateOrderStatus(int id, string status) // update from destop application
         {
             //1. Completed order 
 
             //--OrderModel: {Id, CustomerId, CreatedDate, Status, TotalCost}
             //1.1 Order.Status = "complete" where OrderId == int orderId
+            _db.SaveData<OrderStatusUpdateModel>("dbo.spOrders_Update", new { id, status }connectionStringName,
+                                                                          true);
 
             //--OrderProductModel: {Id, ProductId, OrderId}
             //1.2 update OrderProduct.

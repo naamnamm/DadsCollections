@@ -5,6 +5,6 @@
     [CreatedDate] DATETIME2 NOT NULL, 
     [Status] NVARCHAR(20) NOT NULL, 
     [TotalCost] MONEY NOT NULL, 
-    [orderProductIdList] VARCHAR(500) NOT NULL, 
+    [OrderProductIdList] VARCHAR(500) NOT NULL, 
     CONSTRAINT [FK_Orders_Customers] FOREIGN KEY ([CustomerId]) REFERENCES Customers(Id)
 )
