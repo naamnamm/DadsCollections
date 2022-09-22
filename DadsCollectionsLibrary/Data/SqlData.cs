@@ -58,25 +58,12 @@ namespace DadsCollectionsLibrary.Data
                                                                           true);           
         }
 
-        public int UpdateOrderStatus(int id, string status) // update from destop application
+        public int UpdateOrderStatus(int orderId, string status) // update from destop application
         {
-            //1. Completed order 
-
-            //--OrderModel: {Id, CustomerId, CreatedDate, Status, TotalCost}
-            //1.1 Order.Status = "complete" where OrderId == int orderId
-            _db.SaveData<OrderStatusUpdateModel>("dbo.spOrders_Update", new { id, status }connectionStringName,
+            _db.SaveData("dbo.spOrders_UpdateStatus", new { Id = orderId, status },connectionStringName,
                                                                           true);
 
-            //--OrderProductModel: {Id, ProductId, OrderId}
-            //1.2 update OrderProduct.
-
-            //--ProductModel: {Id, Title, Description, Price, Quantity, ProductTypeId, ImgName, IsSold}
-            //1.3.1 get OrderProducts where OrderId = int orderId >> get a List<OrderProducts> orderProducts
-            //1.3.2 for each orderProduct in orderProducts
-            //----- Product.IsSold = true where Product.Id == orderProduct.ProductId
-
-
-            //2. Cancelled Order
+            return orderId;
         }
     }
 }

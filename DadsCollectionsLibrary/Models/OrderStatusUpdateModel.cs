@@ -11,4 +11,6 @@ namespace DadsCollectionsLibrary.Models
         public int Id { get; set; }
         public string Status { get; set; }
     }
+
+    // not sure if I need this model
 }
