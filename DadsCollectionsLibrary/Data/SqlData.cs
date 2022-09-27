@@ -14,7 +14,6 @@ namespace DadsCollectionsLibrary.Data
     {
         private readonly ISqlDataAccess _db;
         private const string connectionStringName = "SqlDB";
-        private decimal totalCost = 0;
 
         public SqlData(ISqlDataAccess db)
         {
@@ -65,6 +64,28 @@ namespace DadsCollectionsLibrary.Data
 
             return orderId;
         }
+
+
+        public int CreateProducts(ProductModel Product)
+        {
+            ProductModel insertedProduct = _db.LoadData<ProductModel, dynamic>("dbo.spProducts_Insert",
+                                                                          new { Product.Title, Product.Description, Product.Price, Product.Quantity, Product.ProductTypeId, Product.ImgName },
+                                                                          connectionStringName,
+                                                                          true).First();
+            return insertedProduct.Id;
+        }
+
+        public int UpdateProductDetail(ProductModel Product)
+        {
+            //1. load Product that need to be updated
+
+            ProductModel product = _db.LoadData<ProductModel, dynamic>("dbo.spProducts_Update",
+                                                                          new { Product.Id, Product.Title, Product.Description, Product.Price, Product.Quantity, Product.ProductTypeId, Product.ImgName },
+                                                                          connectionStringName,
+                                                                          true).First();
+            return product.Id;
+        }
+
     }
 }
 
@@ -101,6 +122,9 @@ namespace DadsCollectionsLibrary.Data
 
 //    _db.SaveData("dbo.spOrderProducts_Insert", new { ProductId = orderProduct.ProductId, OrderId = order.Id }, connectionStringName, true);
 //}
+
+// _db.SaveData("dbo.spProducts_Insert", new { Product.Title, Product.Description, Product.Price, Product.Quantity, Product.ProductTypeId ,Product.ImgName }, connectionStringName,
+//true);
 
 
 //resources:

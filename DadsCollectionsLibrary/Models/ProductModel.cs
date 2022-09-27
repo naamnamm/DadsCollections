@@ -15,8 +15,6 @@ namespace DadsCollectionsLibrary.Models
         public int Quantity { get; set; }
         public int ProductTypeId { get; set; } 
         public string ImgName { get; set; } 
-
-        public bool IsOrdered { get; set; }
         public bool IsSold { get; set; }
     }
 }
