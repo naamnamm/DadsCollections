@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DadsCollectionsLibrary.Data
 {
-    public class SqlData
+    public class SqlData : IDatabaseData
     {
         private readonly ISqlDataAccess _db;
         private const string connectionStringName = "SqlDB";
@@ -18,11 +18,6 @@ namespace DadsCollectionsLibrary.Data
         public SqlData(ISqlDataAccess db)
         {
             _db = db;
-        }
-
-        public List<ProductModel> GetProducts()
-        {
-            return _db.LoadData<ProductModel, dynamic>("dbo.spProducts_GetAvailableProducts", new { }, connectionStringName, true);
         }
 
         public int CreateOrder(string firstName, string lastName, string email, decimal totalCost, List<int> orderProductIdList)
@@ -36,9 +31,9 @@ namespace DadsCollectionsLibrary.Data
             //2. save data to Orders >> OrderModel: {Id, CustomerId, CreatedDate, Status, TotalCost, orderProductIdList = {1,2,3}}
             OrderModel order = _db.LoadData<OrderModel, dynamic>("dbo.spOrders_Insert",
                                                                 new { CustomerId = customer.Id, Status = "open", TotalCost = totalCost, orderProductIdList = string.Join(",", orderProductIdList) },
-                                                                connectionStringName, 
+                                                                connectionStringName,
                                                                 true).First();
-            
+
 
             //3. for each order product save data to OrderProducts >> OrderProductModel: {Id, ProductId, OrderId}
             foreach (int orderProductId in orderProductIdList)
@@ -54,17 +49,26 @@ namespace DadsCollectionsLibrary.Data
             return _db.LoadData<OrderFullModel, dynamic>("dbo.spOrders_Search",
                                                                           new { email },
                                                                           connectionStringName,
-                                                                          true);           
+                                                                          true);
         }
 
         public int UpdateOrderStatus(int orderId, string status) // update from destop application
         {
-            _db.SaveData("dbo.spOrders_UpdateStatus", new { Id = orderId, status },connectionStringName,
+            _db.SaveData("dbo.spOrders_UpdateStatus", new { Id = orderId, status }, connectionStringName,
                                                                           true);
 
             return orderId;
         }
 
+        public List<ProductModel> GetAvailableProducts()
+        {
+            return _db.LoadData<ProductModel, dynamic>("dbo.spProducts_GetAvailableProducts", new { }, connectionStringName, true);
+        }
+
+        public List<ProductModel> GetAllProducts()
+        {
+            return _db.LoadData<ProductModel, dynamic>("dbo.spProducts_GetAll", new { }, connectionStringName, true);
+        }
 
         public int CreateProducts(ProductModel Product)
         {
