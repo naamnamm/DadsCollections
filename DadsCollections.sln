@@ -3,11 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DadsCollectionsRazorPages", "DadsCollections\DadsCollectionsRazorPages.csproj", "{1B25408A-82AE-482A-BBAC-50CB9FD0F18F}"
-EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DadsCollectionsDB", "DadsCollectionsDB\DadsCollectionsDB.sqlproj", "{B30595BF-4FAC-4EEC-961B-970C3F63762B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DadsCollectionsLibrary", "DadsCollectionsLibrary\DadsCollectionsLibrary.csproj", "{BEFE9553-66F7-4ED8-A61D-8FDD7740ED8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DadsCollectionsLibrary", "DadsCollectionsLibrary\DadsCollectionsLibrary.csproj", "{BEFE9553-66F7-4ED8-A61D-8FDD7740ED8C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DadsCollections.RazorPages", "DadsCollections.RazorPages\DadsCollections.RazorPages.csproj", "{965B6E09-1D7E-46D0-B864-3FF64ECDB844}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BEFE9553-66F7-4ED8-A61D-8FDD7740ED8C} = {BEFE9553-66F7-4ED8-A61D-8FDD7740ED8C}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +18,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1B25408A-82AE-482A-BBAC-50CB9FD0F18F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1B25408A-82AE-482A-BBAC-50CB9FD0F18F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1B25408A-82AE-482A-BBAC-50CB9FD0F18F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1B25408A-82AE-482A-BBAC-50CB9FD0F18F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B30595BF-4FAC-4EEC-961B-970C3F63762B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B30595BF-4FAC-4EEC-961B-970C3F63762B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B30595BF-4FAC-4EEC-961B-970C3F63762B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
@@ -29,6 +28,10 @@ Global
 		{BEFE9553-66F7-4ED8-A61D-8FDD7740ED8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEFE9553-66F7-4ED8-A61D-8FDD7740ED8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BEFE9553-66F7-4ED8-A61D-8FDD7740ED8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{965B6E09-1D7E-46D0-B864-3FF64ECDB844}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{965B6E09-1D7E-46D0-B864-3FF64ECDB844}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{965B6E09-1D7E-46D0-B864-3FF64ECDB844}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{965B6E09-1D7E-46D0-B864-3FF64ECDB844}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
