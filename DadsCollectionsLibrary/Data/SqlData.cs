@@ -70,6 +70,11 @@ namespace DadsCollectionsLibrary.Data
             return _db.LoadData<ProductModel, dynamic>("dbo.spProducts_GetAll", new { }, connectionStringName, true);
         }
 
+        public List<ProductModel> SearchProduct(int productId)
+        {
+            return _db.LoadData<ProductModel, dynamic>("dbo.spProducts_Search", new { Id = productId }, connectionStringName, true);
+        }
+
         public int CreateProducts(ProductModel Product)
         {
             ProductModel insertedProduct = _db.LoadData<ProductModel, dynamic>("dbo.spProducts_Insert",

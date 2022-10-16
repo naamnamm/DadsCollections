@@ -1,0 +1,116 @@
+﻿@page
+@model DadsCollections.RazorPages.Pages.Shop.DisplayModel
+@{
+}
+
+<h1>Shop - Display All Products</h1>
+
+<div class="container">
+    <div class="row">  
+        @foreach (var product in Model.products)
+        {
+            var filePath = "/images/";
+
+            if (product.ProductTypeId == 1)
+            {
+                filePath = filePath + "Ceramics/" + @product.ImgName;
+                <div class="col">
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="@filePath" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">@product.Title</h5>
+                    <p class="card-text">@product.Description</p>
+                    <a href="#" class="btn btn-primary">Add To Cart</a>
+                    <a href="#" class="btn btn-primary" value=>See Product</a> 
+                    <form method="post">
+                    <input asp-for="SelectedProduct.Id" value="@product.Id" type="hidden" /> 
+                    <input type="submit" asp-page-handler="SelectProduct" value="See Product" class="btn btn-primary" />  
+                    </form>
+                  </div>
+                </div> 
+            </div> 
+            }
+
+            if (product.ProductTypeId == 2)
+            {
+                filePath = filePath + "Jewelries/" + @product.ImgName;
+                <div class="col">
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="@filePath" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">@product.Title</h5>
+                    <p class="card-text">@product.Description</p>
+                    <form method="post">
+                    <input asp-for="SelectedProduct.Id" value="@product.Id" type="hidden" /> 
+                    <input type="submit" asp-page-handler="SelectProduct" value="See Product" class="btn btn-primary" />  
+                    </form>
+                  </div>
+                </div> 
+            </div> 
+            }
+
+            if (product.ProductTypeId == 3)
+            {
+                filePath = filePath + "Watches/" + @product.ImgName;
+                <div class="col">
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="@filePath" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">@product.Title</h5>
+                    <p class="card-text">@product.Description</p>
+                    <form method="post">
+                    <input asp-for="SelectedProduct.Id" value="@product.Id" type="hidden" /> 
+                    <input type="submit" asp-page-handler="SelectProduct" value="See Product" class="btn btn-primary" />  
+                    </form>
+                  </div>
+                </div> 
+            </div> 
+            }
+
+            if (product.ProductTypeId == 4)
+            {
+                filePath = filePath + "Other Antiques/" + @product.ImgName;
+                <div class="col">
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="@filePath" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">@product.Title</h5>
+                    <p class="card-text">@product.Description</p>
+                    <form method="post">
+                    <input asp-for="SelectedProduct.Id" value="@product.Id" type="hidden" /> 
+                    <input type="submit" asp-page-handler="SelectProduct" value="See Product" class="btn btn-primary" />  
+                    </form>
+                  </div>
+                </div> 
+            </div> 
+            }
+        }     
+    </div>
+</div>
+
+
+    
+@*<div class="container">
+    <div class="row">  
+        @foreach (var product in Model.products)
+        {
+                <div class="col">
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="@filePath" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">@product.Title</h5>
+                    <p class="card-text">@product.Description</p>
+                    <a href="#" class="btn btn-primary">Add To Cart</a>
+                    <a href="#" class="btn btn-primary" value=>See Product</a> 
+                    <form method="post">
+                        <input asp-for="SelectedProduct.Id" value="@product.Id" type="hidden" /> 
+                        <input type="submit" asp-page-handler="SelectProduct" value="See Product" class="btn btn-primary" />  
+                    </form>
+                  </div>
+                </div> 
+            </div> 
+         }
+
+    </div>
+</div>*@
+
