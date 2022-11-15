@@ -38,7 +38,7 @@
               </li>  
 
               <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#cart">Cart</a>
+                <a class="nav-link" asp-page="/Cart"> Cart </a>
               </li>             
             </ul>
             <hr/>
@@ -65,6 +65,8 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
+
+
 </body>
 </html>
 

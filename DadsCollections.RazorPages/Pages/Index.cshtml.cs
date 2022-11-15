@@ -10,7 +10,10 @@ namespace DadsCollections.Pages
         private readonly ILogger<IndexModel> _logger;
 
         private readonly IWebHostEnvironment _webHostEnvironment;
-        
+
+        public const string SessionKeyName = "_Name";
+        public const string SessionKeyAge = "_Age";
+
         public List<string> CeramicImages { get; set; }
         public List<string> WatchImages { get; set; }
         public List<string> JewelryImages { get; set; }
@@ -20,11 +23,18 @@ namespace DadsCollections.Pages
         {
             _logger = logger;
             _webHostEnvironment = webHostEnvironment;
-
         }
 
         public IActionResult OnGet()
         {
+
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(SessionKeyName)))
+            {
+                HttpContext.Session.SetString(SessionKeyName, "The Doctor");
+                HttpContext.Session.SetInt32(SessionKeyAge, 73);
+            }
+
+            //display products
             var provider = new PhysicalFileProvider(_webHostEnvironment.WebRootPath);
             var ceramicImgs = provider.GetDirectoryContents(Path.Combine("images", "ceramics"));
             var watchImgs = provider.GetDirectoryContents(Path.Combine("images", "watches"));

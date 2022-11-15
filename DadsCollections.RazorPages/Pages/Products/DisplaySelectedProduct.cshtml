@@ -4,4 +4,13 @@
 }
 <h1> Product Display </h1>
 <h5 class="card-title">@Model.SelectedProduct.Title</h5>
+    <ul class="thumbnails" style="width: 18rem;">
+        <img class="card-img-top" src="~/images/@Model.SelectedProduct.ImgName" alt="Card image cap">
+    </ul>
 <p class="card-text">@Model.SelectedProduct.Description</p>
+
+<a asp-page="/Cart" asp-page-handler="AddToCart" asp-route-id="@Model.SelectedProduct.Id" class="btn btn-primary">Add to Cart</a>
+
+@*<form method="post">
+    <input type="submit" asp-page-handler="AddToCart" asp-route-id="@Model.SelectedProduct.Id" value="Add to Cart" class="btn btn-primary" />  
+</form>*@

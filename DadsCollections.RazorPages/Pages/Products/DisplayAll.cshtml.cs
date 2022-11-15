@@ -2,6 +2,7 @@ using DadsCollectionsLibrary.Data;
 using DadsCollectionsLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.JSInterop;
 
 namespace DadsCollections.RazorPages.Pages.Shop
 {
@@ -12,6 +13,9 @@ namespace DadsCollections.RazorPages.Pages.Shop
 
         [BindProperty] //bind just for the post action
         public ProductModel SelectedProduct { get; set; }
+
+        public const string SessionKeyName = "_Name";
+        public const string SessionKeyCreatedDate = "_createdDate";
 
         public List<ProductModel> products { get; set; }
 
@@ -24,7 +28,6 @@ namespace DadsCollections.RazorPages.Pages.Shop
             products = _db.GetAllProducts();
 
             return Page();
-
         }
 
         public IActionResult OnPostSelectProduct()
@@ -38,6 +41,7 @@ namespace DadsCollections.RazorPages.Pages.Shop
             products = _db.GetAllProducts();
             var selectedProduct = products.Where(x => x.Id == SelectedProduct.Id).FirstOrDefault();
 
+            // sends the ID to DisplayProduct page onGet method
             return RedirectToPage("./DisplaySelectedProduct", new { Id = selectedProduct.Id });
         }
     }
