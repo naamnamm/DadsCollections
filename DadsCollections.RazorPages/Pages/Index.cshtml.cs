@@ -11,8 +11,6 @@ namespace DadsCollections.Pages
 
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public const string SessionKeyName = "_Name";
-        public const string SessionKeyAge = "_Age";
 
         public List<string> CeramicImages { get; set; }
         public List<string> WatchImages { get; set; }
@@ -25,15 +23,8 @@ namespace DadsCollections.Pages
             _webHostEnvironment = webHostEnvironment;
         }
 
-        public IActionResult OnGet()
+        public void OnGet()
         {
-
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString(SessionKeyName)))
-            {
-                HttpContext.Session.SetString(SessionKeyName, "The Doctor");
-                HttpContext.Session.SetInt32(SessionKeyAge, 73);
-            }
-
             //display products
             var provider = new PhysicalFileProvider(_webHostEnvironment.WebRootPath);
             var ceramicImgs = provider.GetDirectoryContents(Path.Combine("images", "ceramics"));
@@ -59,7 +50,6 @@ namespace DadsCollections.Pages
                 JewelryImages.Add(item.Name);
             }
 
-            return Page();
         }
     }
 }

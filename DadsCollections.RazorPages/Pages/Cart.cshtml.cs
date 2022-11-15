@@ -10,9 +10,8 @@ namespace DadsCollections.RazorPages.Pages
     {
         private IDatabaseData _db;
 
-        //[BindProperty(SupportsGet = true)] //Id as part of the url
-        //public int Id { get; set; }
         public List<CartItem> cart { get; set; }
+        
         public decimal Total { get; set; }
 
         public List<ProductModel> products { get; set; }
@@ -50,7 +49,7 @@ namespace DadsCollections.RazorPages.Pages
                 });
 
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
-                //return RedirectToPage("Cart");
+
                 return Page();
             }
 
@@ -73,7 +72,7 @@ namespace DadsCollections.RazorPages.Pages
             SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
 
             return Page();
-            //return RedirectToPage("Cart");
+
         }
 
         private int Exists(List<CartItem> cart, int id)
@@ -87,25 +86,5 @@ namespace DadsCollections.RazorPages.Pages
             }
             return -1;
         }
-
-        //when first load the first - get cartID from cookie if exist, otherwise set cookie
-        //public void OnGet()
-        //{
-        //    const string CookieName = "DadsCollectionCookie";
-        //    if (Request.Cookies[CookieName] == null)
-        //    {
-        //        var cookieOptions = new CookieOptions
-        //        {
-        //            Secure = true,
-        //            HttpOnly = true,
-        //            SameSite = SameSiteMode.Unspecified
-        //        };
-
-        //        // Add the cookie to the response cookie collection
-        //        Response.Cookies.Append(CookieName, "cartID", cookieOptions);
-        //    }
-        //}
-
-
     }
 }

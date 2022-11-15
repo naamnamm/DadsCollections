@@ -10,12 +10,8 @@ namespace DadsCollections.RazorPages.Pages.Shop
     {
         private IDatabaseData _db;
 
-
         [BindProperty] //bind just for the post action
         public ProductModel SelectedProduct { get; set; }
-
-        public const string SessionKeyName = "_Name";
-        public const string SessionKeyCreatedDate = "_createdDate";
 
         public List<ProductModel> products { get; set; }
 
