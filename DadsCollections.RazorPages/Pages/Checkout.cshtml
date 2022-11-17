@@ -1,17 +1,16 @@
 ﻿@page
-@model DadsCollections.RazorPages.Pages.CartModel
+@model DadsCollections.RazorPages.Pages.CheckoutModel
 @{
 }
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Cart</title>
+    <title>Checkout</title>
 </head>
 <body>
 
     <h3>Cart</h3>
-    <form method="post" asp-page="cart" asp-page-handler="update">
         <table border="1">
             <tr>
                 <th>Action</th>
@@ -43,10 +42,17 @@
                 <td align="center">$@Model.Total</td>
             </tr>
         </table>
+@*
+    <form method="post" asp-page="CheckOut" asp-page-handler="update">
+    </form>*@
+
+    <form method="post">
+        <input asp-for="cart" value="@product.Id" type="hidden" /> 
+        <input type="submit" asp-page-handler="PlaceOrder" value="Place Order" class="btn btn-primary" />  
     </form>
+
     <p> @HttpContext.Session.Id</p>
-    <a asp-page="/Products/DisplayAll" >Continue Shopping</a> 
-    <a asp-page="/Checkout" class="btn btn-primary">Check out</a>
+
 
 </body>
 </html>

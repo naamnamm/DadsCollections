@@ -27,7 +27,6 @@ namespace DadsCollections.RazorPages.Pages
             Total = cart.Sum(i => i.Product.Price * i.Quantity);
         }
 
-
         public IActionResult OnGetAddToCart(string id)
         {
             products = _db.GetAllProducts();
