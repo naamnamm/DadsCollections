@@ -23,6 +23,8 @@ namespace DadsCollections.RazorPages.Pages
 
         public void OnGet()
         {
+            // need to create a check to see if cart is empty
+
             cart = SessionHelper.GetObjectFromJson<List<CartItem>>(HttpContext.Session, "cart");
             Total = cart.Sum(i => i.Product.Price * i.Quantity);
         }

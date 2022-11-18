@@ -4,11 +4,15 @@
 	@totalCost money,
 	@orderProductIdList varchar(500)
 AS
+
+declare @createdDate datetime2(7);
+set @createdDate = GETDATE();
+
 begin
 	set nocount on;
 
-	insert into dbo.Orders(CustomerId, [Status], TotalCost, orderProductIdList)
-	values (@customerId, @status, @totalCost, @orderProductIdList)
+	insert into dbo.Orders(CustomerId, [Status], TotalCost, orderProductIdList, CreatedDate)
+	values (@customerId, @status, @totalCost, @orderProductIdList, @createdDate)
 
 	--returned the inserted record (orderId)
 	SELECT SCOPE_IDENTITY()

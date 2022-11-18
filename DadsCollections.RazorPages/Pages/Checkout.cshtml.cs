@@ -15,6 +15,7 @@ namespace DadsCollections.RazorPages.Pages
         private IDatabaseData _db;
         public List<CartItem> cart { get; set; }
 
+        [BindProperty]
         public CustomerModel customer { get; set; }
 
         public string Message { get; set; }
@@ -26,32 +27,37 @@ namespace DadsCollections.RazorPages.Pages
         {
             _db = db;
         }
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            cart = SessionHelper.GetObjectFromJson<List<CartItem>>(HttpContext.Session, "cart");
+
+            //need to refactor this validation
             if (cart is null)
             {
                 Message = "no item in the cart";
-                return;
+                return RedirectToPage("./Cart");
             }
 
-            cart = SessionHelper.GetObjectFromJson<List<CartItem>>(HttpContext.Session, "cart");
             Total = cart.Sum(i => i.Product.Price * i.Quantity);
+            return Page();
         }
 
         public IActionResult OnPostPlaceOrder()
         {
+            // when user click submit - call this onPost function
             cart = SessionHelper.GetObjectFromJson<List<CartItem>>(HttpContext.Session, "cart");
-            Total = cart.Sum(i => i.Product.Price * i.Quantity);
+            Total = cart.Sum(item => item.Product.Price * item.Quantity);
 
+            OrderProductList = new List<int>();
+
+            //convert products in Cart to List of int
             foreach (var item in cart) {
 
                 //push item.product.id
+                OrderProductList.Add(item.Product.Id);
             }
 
-            _db.CreateOrder(customer.FirstName, customer.LastName, customer.Email, Total, OrderProductList);
-
-            //need to convert products in Cart to List of int
-
+            int id = _db.CreateOrder(customer.FirstName, customer.LastName, customer.Email, Total, OrderProductList);
 
             //where to direct user to?
             return Page();
