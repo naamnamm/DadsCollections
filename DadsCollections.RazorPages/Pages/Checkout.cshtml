@@ -3,82 +3,90 @@
 @{
 }
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Checkout</title>
-</head>
-<body>
+@if (Model.cart is null) 
+{
+    <h4>no item in the cart</h4>
+} 
+else 
+{
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Checkout</title>
+    </head>
+    <body>
 
-    <h3>Check Out</h3>
-        <table border="1">
-            <tr>
-                <th>Action</th>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Photo</th>
-                <th>Price</th>
-                <th>Quantity <input type="submit" value="Update" /></th>
-                <th>Sub Total</th>
-            </tr>
-            @foreach (var item in Model.cart)
-            {
-                <tr align="center">
-                    <td align="center">
-                        <a asp-page="cart" asp-page-handler="delete" asp-route-id="@item.Product.Id">X</a>
-                    </td>
-                    <td>@item.Product.Id</td>
-                    <td>@item.Product.Title</td>
-                    <td><img src="~/images/@item.Product.ImgName" width="120" height="100" /></td>
-                    <td>$@item.Product.Price</td>
-                    <td><input type="number" name="quantities" value="@item.Quantity" min="1" style="width: 50px;" /></td>
-                    <td>
-                        $@(item.Product.Price * item.Quantity)
-                    </td>
+        <h3>Check Out</h3>
+            <table border="1">
+                <tr>
+                    <th>Action</th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Photo</th>
+                    <th>Price</th>
+                    <th>Quantity <input type="submit" value="Update" /></th>
+                    <th>Sub Total</th>
                 </tr>
-            }
-            <tr>
-                <td colspan="6" align="right">Total</td>
-                <td align="center">$@Model.Total</td>
-            </tr>
-        </table>
+                @foreach (var item in Model.cart)
+                {
+                    <tr align="center">
+                        <td align="center">
+                            <a asp-page="cart" asp-page-handler="delete" asp-route-id="@item.Product.Id">X</a>
+                        </td>
+                        <td>@item.Product.Id</td>
+                        <td>@item.Product.Title</td>
+                        <td><img src="~/images/@item.Product.ImgName" width="120" height="100" /></td>
+                        <td>$@item.Product.Price</td>
+                        <td><input type="number" name="quantities" value="@item.Quantity" min="1" style="width: 50px;" /></td>
+                        <td>
+                            $@(item.Product.Price * item.Quantity)
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td colspan="6" align="right">Total</td>
+                    <td align="center">$@Model.Total</td>
+                </tr>
+            </table>
 
 
-@*    <form method="post">
-        <input asp-for="SelectedProduct.Id" value="@product.Id" type="hidden" /> 
-        <input type="submit" asp-page-handler="PlaceOrder" value="Place Order" class="btn btn-primary" />  
-    </form>*@
+    @*    <form method="post">
+            <input asp-for="SelectedProduct.Id" value="@product.Id" type="hidden" /> 
+            <input type="submit" asp-page-handler="PlaceOrder" value="Place Order" class="btn btn-primary" />  
+        </form>*@
 
-    <form method="post">
-    <div class="pb-2">
-        <div class="card">
-            <div class="card-title"> 
-                <p>Customer Information </p>
-            </div>
-
-            <div class="card-body">
-                <div class="d-flex flex-row align-items-center">
-@*                    <div class="form-group"> 
-                        <label asp-for="customer.FirstName" class="control-label"> </label>*@
-                        <input asp-for="customer.FirstName" class="form-control form-control-lg" placeholder="First Name" />
-                    @*</div>*@
-
-                    <input asp-for="customer.LastName" class="form-control form-control-lg" placeholder="Last Name" />
-                    
-                    <input asp-for="customer.Email" class="form-control form-control-lg" placeholder="Email" />
-
+        <form method="post">
+        <div class="pb-2">
+            <div class="card">
+                <div class="card-title"> 
+                    <p>Customer Information </p>
                 </div>
 
-                    <div class="form-group"> 
-                        <button type="submit" asp-page-handler="PlaceOrder" class="btn btn-primary">Place Order</button>
+                <div class="card-body">
+                    <div class="d-flex flex-row align-items-center">
+    @*                    <div class="form-group"> 
+                            <label asp-for="customer.FirstName" class="control-label"> </label>*@
+                            <input asp-for="customer.FirstName" class="form-control form-control-lg" placeholder="First Name" />
+                        @*</div>*@
+
+                        <input asp-for="customer.LastName" class="form-control form-control-lg" placeholder="Last Name" />
+                    
+                        <input asp-for="customer.Email" class="form-control form-control-lg" placeholder="Email" />
+
                     </div>
+
+                        <div class="form-group"> 
+                            <button type="submit" asp-page-handler="PlaceOrder" class="btn btn-primary">Place Order</button>
+                        </div>
+                </div>
             </div>
         </div>
-    </div>
-</form>
+    </form>
 
-    <p> @HttpContext.Session.Id</p>
+        <p> @HttpContext.Session.Id</p>
 
 
-</body>
-</html>
+    </body>
+    </html>
+
+}

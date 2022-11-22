@@ -14,8 +14,16 @@ begin
 	insert into dbo.Orders(CustomerId, [Status], TotalCost, orderProductIdList, CreatedDate)
 	values (@customerId, @status, @totalCost, @orderProductIdList, @createdDate)
 
-	--returned the inserted record (orderId)
-	SELECT SCOPE_IDENTITY()
+	--attempt 1
+	--Expectation: should return the inserted record (orderId)
+	--Actual output: return null --- why?
+	----SELECT SCOPE_IDENTITY()
+	--https://stackoverflow.com/questions/13237015/scope-identity-returns-null
+
+	--attempt 2
+	select o.*
+	from dbo.Orders o 
+	where Id = SCOPE_IDENTITY()
 
 end
 

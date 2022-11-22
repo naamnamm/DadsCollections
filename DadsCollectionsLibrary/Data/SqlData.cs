@@ -34,6 +34,10 @@ namespace DadsCollectionsLibrary.Data
                                                                 connectionStringName,
                                                                 true).First();
 
+            if (order is null)
+            {
+                return 0;
+            }
 
             //3. for each order product save data to OrderProducts >> OrderProductModel: {Id, ProductId, OrderId}
             foreach (int orderProductId in orderProductIdList)

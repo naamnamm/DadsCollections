@@ -12,6 +12,7 @@ begin
 		values (@firstName, @lastName, @email)
 	end
 
+	--assumption
 	--John doe jd@gmail.com
 	--Susan doe jd@gmail.com is ok -- treat these two as different customers
 

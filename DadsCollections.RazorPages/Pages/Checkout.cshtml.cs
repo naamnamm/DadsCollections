@@ -60,7 +60,7 @@ namespace DadsCollections.RazorPages.Pages
             int id = _db.CreateOrder(customer.FirstName, customer.LastName, customer.Email, Total, OrderProductList);
 
             //where to direct user to?
-            return Page();
+            return RedirectToPage("./OrderPlaced", new { id });
         }
     }
 }
