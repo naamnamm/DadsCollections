@@ -72,12 +72,13 @@
     <Build Include="dbo\StoredProcedures\spCustomers_Insert.sql" />
     <Build Include="dbo\StoredProcedures\spOrders_Insert.sql" />
     <Build Include="dbo\StoredProcedures\spOrderProducts_Insert.sql" />
-    <Build Include="dbo\StoredProcedures\spOrders_Search.sql" />
+    <Build Include="dbo\StoredProcedures\spOrders_SearchByEmail.sql" />
     <Build Include="dbo\StoredProcedures\spOrders_UpdateStatus.sql" />
     <Build Include="dbo\StoredProcedures\spProducts_Insert.sql" />
     <Build Include="dbo\StoredProcedures\spProducts_GetAll.sql" />
     <Build Include="dbo\StoredProcedures\spProducts_Update.sql" />
     <Build Include="dbo\StoredProcedures\spProducts_Search.sql" />
+    <Build Include="dbo\StoredProcedures\spOrders_SearchById.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="DadsCollectionsDB.refactorlog" />

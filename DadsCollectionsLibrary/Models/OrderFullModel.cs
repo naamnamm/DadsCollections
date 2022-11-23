@@ -26,6 +26,8 @@ namespace DadsCollectionsLibrary.Models
         public string ProductDescription { get; set; }
         public decimal Price { get; set; }
         public int Quantity { get; set; }
+
+        public string ImgName { get; set; }
         public bool IsSold { get; set; }
 
     }

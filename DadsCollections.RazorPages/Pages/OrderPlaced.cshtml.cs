@@ -12,9 +12,11 @@ namespace DadsCollections.RazorPages.Pages
         [BindProperty(SupportsGet = true)] //id as part of the url
         public int Id { get; set; }
 
-        public CustomerModel customer { get; set; }
+        public string CustomerName { get; set; }
 
-        public OrderProductModel OrderedProducts { get; set; }
+        public List<OrderFullModel> Order { get; set; }
+
+        public decimal OrderTotal { get; set; }
 
         public OrderPlacedModel(IDatabaseData db)
         {
@@ -24,24 +26,9 @@ namespace DadsCollections.RazorPages.Pages
         {
             //display success message includes
 
-
-
-            //1. need to create spOrders_SearchByOrderId
-
-            
-            //order ID get from url 
-            //--searchOrderById(Id)
-            //output: Order = {Id, CustomerId, CreatedDate, Status, TotalCost, orderProductIdList = {1,2,3}}
-
-            //customers name
-            //--searchCustomerById(Order.CustomerID)
-            //output: customer = {Id, FirstName, LastName, Email}
-
-            //if order is not null
-            //search order products by orderID
-            //1. loop through orderProductIdList = {1,2,3} 
-            //output: List<ProductModel>
-
+            Order = _db.SearchOrdersById(Id);
+            OrderTotal = Order.First().TotalCost;
+            CustomerName = Order.First().FirstName;
         }
     }
 }

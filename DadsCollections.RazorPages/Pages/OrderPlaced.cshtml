@@ -8,27 +8,31 @@
     <div class="gap">
         <div class="col-2 d-flex mx-auto"> </div>
     </div>
-    <div class="title mx-auto"> Thank you  for your order! </div>
+    <div class="title mx-auto"> Thank you for your order, @Model.CustomerName! </div>
     <div class="main"> 
         <span id="sub-title">
             <p><b>Order Summary</b></p>
         </span>
 
+        @foreach (var product in Model.Order)
+        {
         <div class="row row-main">
-            <div class="col-3"> <img class="img-fluid" src="https://i.imgur.com/qSnCFIS.png"> </div>
+            <div class="col-3"> <img class="img-fluid" src="~/images/@product.ImgName"> </div>
             <div class="col-6">
                 <div class="row d-flex">
-                    <p><b>iPhone XR</b></p>
+                    <p><b>@product.ProductTitle</b></p>
                 </div>
                 <div class="row d-flex">
-                    <p class="text-muted">128GB White</p>
+                    <p class="text-muted">@product.ProductDescription</p>
                 </div>
             </div>
             <div class="col-3 d-flex justify-content-end">
-                <p><b>$599</b></p>
+                <p><b>$@product.Price</b></p>
             </div>
-        </div>
-        <div class="row row-main">
+        </div>         
+        }
+        
+@*        <div class="row row-main">
             <div class="col-3"> <img class="img-fluid" src="https://i.imgur.com/WuJwAJD.jpg"> </div>
             <div class="col-6">
                 <div class="row d-flex">
@@ -55,13 +59,14 @@
             <div class="col-3 d-flex justify-content-end">
                 <p><b>$49.95</b></p>
             </div>
-        </div>
+        </div>*@
+
         <hr>
         <div class="total">
             <div class="row">
                 <div class="col"> <b> Total:</b> </div>
-                <div class="col d-flex justify-content-end"> <b>$847.95</b> </div>
-            </div> <button class="btn d-flex mx-auto"> Track your order </button>
+                <div class="col d-flex justify-content-end"> <b>$@Model.OrderTotal</b> </div>
+            </div> 
         </div>
     </div>
 </div>

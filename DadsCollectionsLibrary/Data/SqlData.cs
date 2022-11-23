@@ -48,10 +48,18 @@ namespace DadsCollectionsLibrary.Data
             return order.Id; // which says this order ID has been created on front-end
         }
 
-        public List<OrderFullModel> SearchOrders(string email) // search order from destop application
+        public List<OrderFullModel> SearchOrdersByEmail(string email) // search order from destop application
         {
-            return _db.LoadData<OrderFullModel, dynamic>("dbo.spOrders_Search",
+            return _db.LoadData<OrderFullModel, dynamic>("dbo.spOrders_SearchByEmail",
                                                                           new { email },
+                                                                          connectionStringName,
+                                                                          true);
+        }
+
+        public List<OrderFullModel> SearchOrdersById(int Id) // search orders from web app
+        {
+            return _db.LoadData<OrderFullModel, dynamic>("dbo.spOrders_SearchById",
+                                                                          new { Id },
                                                                           connectionStringName,
                                                                           true);
         }
