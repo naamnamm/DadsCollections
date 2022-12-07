@@ -3,7 +3,7 @@
 	@Status nvarchar(20)
 AS
 
-if (@Status = 'complete')
+if (@Status = 'completed')
 	begin
 		set nocount on;
 		--update Orders.Status = complete
@@ -24,7 +24,7 @@ if (@Status = 'complete')
 		WHERE op.OrderId = @Id
 	end
 
-if (@Status = 'cancel')
+if (@Status = 'cancelled')
 	begin
 		set nocount on;
 		--update Orders.Status = complete

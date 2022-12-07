@@ -34,18 +34,13 @@ namespace DadsCollectionsLibrary.Data
                                                                 connectionStringName,
                                                                 true).First();
 
-            if (order is null)
-            {
-                return 0;
-            }
-
             //3. for each order product save data to OrderProducts >> OrderProductModel: {Id, ProductId, OrderId}
             foreach (int orderProductId in orderProductIdList)
             {
                 _db.SaveData("dbo.spOrderProducts_Insert", new { ProductId = orderProductId, OrderId = order.Id }, connectionStringName, true);
             }
 
-            return order.Id; // which says this order ID has been created on front-end
+            return order.Id; 
         }
 
         public List<OrderFullModel> SearchOrdersByEmail(string email) // search order from destop application

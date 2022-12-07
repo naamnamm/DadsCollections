@@ -1,0 +1,54 @@
+﻿<Window x:Class="DadsCollections.Desktop.OrderForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DadsCollections.Desktop"
+        mc:Ignorable="d"
+        Title="OrderForm" Height="450" Width="800">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <TextBlock FontWeight="Bold" Margin="5">Order ID:</TextBlock>
+            <TextBlock x:Name="idText" Margin="5" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <TextBlock FontWeight="Bold" Margin="5">Customer:</TextBlock>
+            <TextBlock x:Name="firstNameText" Margin="5" />
+            <TextBlock x:Name="lastNameText" Margin="5" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <TextBlock FontWeight="Bold" Margin="5">Order Date:</TextBlock>
+            <TextBlock x:Name="createdDateText" Margin="5" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="3">
+            <TextBlock FontWeight="Bold" Margin="5">Order Status:</TextBlock>
+            <TextBlock x:Name="statusText" Margin="5" />
+        </StackPanel>
+
+        <Button Margin="10" Padding="20 10" Grid.Row="4" Grid.Column="0"
+            x:Name="completed" Click="updateOrder_Click">
+            Complete
+        </Button>
+
+        <Button Margin="10" Padding="20 10" Grid.Row="4" Grid.Column="1"
+            x:Name="cancelled" Click="updateOrder_Click">
+            Cancel
+        </Button>
+
+    </Grid>
+</Window>
