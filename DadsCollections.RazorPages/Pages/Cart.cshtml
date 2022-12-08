@@ -11,6 +11,14 @@
 <body>
 
     <h3>Cart</h3>
+
+    @if(@Model.cart is null)
+    {
+        <p> There is no item in the cart. </p> <a asp-page="/Products/DisplayAll" >Continue Shopping</a> 
+    }
+
+    else
+    {
     <form method="post" asp-page="cart" asp-page-handler="update">
         <table border="1">
             <tr>
@@ -47,6 +55,7 @@
     <p> @HttpContext.Session.Id</p>
     <a asp-page="/Products/DisplayAll" >Continue Shopping</a> 
     <a asp-page="/Checkout" class="btn btn-primary">Check out</a>
+    }
 
 </body>
 </html>

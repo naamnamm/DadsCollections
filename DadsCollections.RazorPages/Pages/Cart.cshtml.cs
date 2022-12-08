@@ -11,7 +11,7 @@ namespace DadsCollections.RazorPages.Pages
         private IDatabaseData _db;
 
         public List<CartItem> cart { get; set; }
-        
+
         public decimal Total { get; set; }
 
         public List<ProductModel> products { get; set; }
@@ -26,6 +26,9 @@ namespace DadsCollections.RazorPages.Pages
             // need to create a check to see if cart is empty
 
             cart = SessionHelper.GetObjectFromJson<List<CartItem>>(HttpContext.Session, "cart");
+
+            if (cart is null) return;
+
             Total = cart.Sum(i => i.Product.Price * i.Quantity);
         }
 
