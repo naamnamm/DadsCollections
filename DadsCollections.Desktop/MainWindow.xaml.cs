@@ -31,24 +31,43 @@ namespace DadsCollections.Desktop
             _db = db;
         }
 
-        private void searchForOrder_Click(object sender, RoutedEventArgs e)
-        {
-            List<OrderFullModel> orders = _db.SearchOrdersByEmail(emailText.Text);
-            resultsList.ItemsSource = orders;
-        }
-
-        private void viewOrder_Click(object sender, RoutedEventArgs e)
+        private void openOrderWindow_Click(object sender, RoutedEventArgs e)
         {
 
-            var orderForm = App.serviceProvider.GetService<OrderForm>();
-            var model = (OrderFullModel)((Button)e.Source).DataContext;
-            //send id to order form
+            var orderWindow = App.serviceProvider.GetService<Order>();
+            //var model = (OrderFullModel)((Button)e.Source).DataContext;
 
-            orderForm.PopulateCheckInInfo(model);
+            //orderForm.PopulateCheckInInfo(model);
             //search order (id)
-            orderForm.Show();
+            orderWindow.Show();
 
+            this.Close();
 
         }
+
+        //main window has 2 buttons
+        // order
+        //-- 1. has button to show the search Order Window
+
+        //product
+
+        //private void searchForOrder_Click(object sender, RoutedEventArgs e)
+        //{
+        //    List<OrderFullModel> orders = _db.SearchOrdersByEmail(emailText.Text);
+        //    resultsList.ItemsSource = orders;
+        //}
+
+        //private void viewOrder_Click(object sender, RoutedEventArgs e)
+        //{
+
+        //    var orderForm = App.serviceProvider.GetService<OrderForm>();
+        //    var model = (OrderFullModel)((Button)e.Source).DataContext;
+        //    //send id to order form
+
+        //    orderForm.PopulateCheckInInfo(model);
+        //    //search order (id)
+        //    orderForm.Show();
+
+        //}
     }
 }

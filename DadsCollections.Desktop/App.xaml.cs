@@ -25,6 +25,7 @@ namespace DadsCollections.Desktop
 
             var services = new ServiceCollection();
             services.AddTransient<MainWindow>();
+            services.AddTransient<Order>();
             services.AddTransient<OrderForm>();
             services.AddTransient<IDatabaseData, SqlData>();
             services.AddTransient<ISqlDataAccess, SqlDataAccess>();

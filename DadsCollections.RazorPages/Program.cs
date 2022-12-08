@@ -38,6 +38,19 @@ app.MapRazorPages();
 app.Run();
 
 
+
+// Todo:
+//-- Moderate tasks - need concentration
+//1. cart page - add delete button (add ability to adjust the cart)
+
+
+//-- Easy Tasks
+//1. Main Page - need to adjust image to full screen
+
+//2. product page - add products to DB and display
+
+
+
 //ref to cookie and session setup
 //https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore31RazorPages
 //https://www.mikesdotnetting.com/article/210/razor-web-pages-e-commerce-adding-a-shopping-cart-to-the-bakery-template-site
