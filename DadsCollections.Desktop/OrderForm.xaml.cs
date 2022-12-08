@@ -41,6 +41,7 @@ namespace DadsCollections.Desktop
             lastNameText.Text = _data.LastName;
             createdDateText.Text = _data.CreatedDate.ToShortDateString();
             statusText.Text = _data.Status;
+            orderProductsText.Text = _data.OrderProductIdList.ToString();
         }
 
         private void updateOrder_Click(object sender, RoutedEventArgs e)

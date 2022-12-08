@@ -13,6 +13,7 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -40,12 +41,17 @@
             <TextBlock x:Name="statusText" Margin="5" />
         </StackPanel>
 
-        <Button Margin="10" Padding="20 10" Grid.Row="4" Grid.Column="0"
+        <StackPanel Orientation="Horizontal" Grid.Row="4">
+            <TextBlock FontWeight="Bold" Margin="5">Order Product(s):</TextBlock>
+            <TextBlock x:Name="orderProductsText" Margin="5" />
+        </StackPanel>
+
+        <Button Margin="10" Padding="20 10" Grid.Row="5" Grid.Column="0"
             x:Name="completed" Click="updateOrder_Click">
             Complete
         </Button>
 
-        <Button Margin="10" Padding="20 10" Grid.Row="4" Grid.Column="1"
+        <Button Margin="10" Padding="20 10" Grid.Row="5" Grid.Column="1"
             x:Name="cancelled" Click="updateOrder_Click">
             Cancel
         </Button>
