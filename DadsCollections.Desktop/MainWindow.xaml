@@ -29,7 +29,7 @@
 
         <Button Margin="5" Padding="10" Grid.Row="0" Grid.Column="1" 
                                 Grid.RowSpan="4" VerticalAlignment="Center"
-                                >
+                                Click="openProductWindow_Click">
             Products
         </Button>
     </Grid>

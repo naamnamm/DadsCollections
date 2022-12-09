@@ -27,6 +27,8 @@ namespace DadsCollections.Desktop
             services.AddTransient<MainWindow>();
             services.AddTransient<Order>();
             services.AddTransient<OrderForm>();
+            services.AddTransient<Product>();
+            services.AddTransient<AddProductForm>();
             services.AddTransient<IDatabaseData, SqlData>();
             services.AddTransient<ISqlDataAccess, SqlDataAccess>();
 

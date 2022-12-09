@@ -33,16 +33,24 @@ namespace DadsCollections.Desktop
 
         private void openOrderWindow_Click(object sender, RoutedEventArgs e)
         {
-
             var orderWindow = App.serviceProvider.GetService<Order>();
-            //var model = (OrderFullModel)((Button)e.Source).DataContext;
-
-            //orderForm.PopulateCheckInInfo(model);
-            //search order (id)
             orderWindow.Show();
-
             this.Close();
 
+            //var model = (OrderFullModel)((Button)e.Source).DataContext;
+            //orderForm.PopulateCheckInInfo(model);
+            //search order (id)
+        }
+
+        private void openProductWindow_Click(object sender, RoutedEventArgs e)
+        {
+            var productWindow = App.serviceProvider.GetService<Product>();
+            productWindow.Show();
+            this.Close();
+
+            //var model = (OrderFullModel)((Button)e.Source).DataContext;
+            //orderForm.PopulateCheckInInfo(model);
+            //search order (id)
         }
 
         //main window has 2 buttons
