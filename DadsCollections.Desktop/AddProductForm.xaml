@@ -6,7 +6,68 @@
         xmlns:local="clr-namespace:DadsCollections.Desktop"
         mc:Ignorable="d"
         Title="AddProductForm" Height="450" Width="800">
-    <Grid>
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" 
+                   Text="Add Product"  FontSize="28"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" FontWeight="Bold" 
+                   Margin="5">Title:</TextBlock>
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="titleText" 
+                 Width="100" Margin="5" />
+
+        <TextBlock Grid.Row="2" Grid.Column="0" FontWeight="Bold" 
+                   Margin="5">Description:</TextBlock>
+        <TextBox Grid.Row="2" Grid.Column="1" x:Name="descriptionText" 
+                 Width="100" Margin="5" />
         
+        <TextBlock Grid.Row="3" Grid.Column="0" FontWeight="Bold" 
+                   Margin="5">Price:</TextBlock>
+        <TextBox Grid.Row="3" Grid.Column="1" x:Name="priceText" 
+                 Width="100" Margin="5" />
+        
+        <TextBlock Grid.Row="4" Grid.Column="0" FontWeight="Bold" 
+                   Margin="5">Quantity:</TextBlock>
+        <TextBox Grid.Row="4" Grid.Column="1" x:Name="quantityText" 
+                 Width="100" Margin="5" />
+
+        <TextBlock Grid.Row="5" Grid.Column="0" FontWeight="Bold" 
+                   Margin="5">ImgName:</TextBlock>
+        <TextBox Grid.Row="5" Grid.Column="1" x:Name="imgNameText" 
+                 Width="100" Margin="5" />
+
+        <TextBlock Grid.Row="6" Grid.Column="0" FontWeight="Bold" 
+                   Margin="5">Product Type:</TextBlock>
+        <TextBox Grid.Row="6" Grid.Column="1" x:Name="productTypeText" 
+                 Width="100" Margin="5" />
+
+        <Button x:Name="addProduct" Margin="5" Padding="5" Grid.Row="8" Grid.Column="1"
+                Click="addProduct_Click">
+            Add
+        </Button>
+
     </Grid>
 </Window>

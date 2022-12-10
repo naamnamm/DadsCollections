@@ -23,21 +23,9 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
+        <!--search products-->
         <TextBlock Grid.Row="0" Grid.Column="0" 
                    Text="Search for Product"  FontSize="28"/>
-
-        <TextBlock Grid.Row="0" Grid.Column="1" Margin="50 0 50 0"
-                   Text="Add Product"  FontSize="28"/>
-
-        <Button x:Name="backToMainWindow" Width="50" Margin="5" Padding="5" Grid.Row="0" Grid.Column="4"
-                    Click="backToMainWindow_Click">
-            Back
-        </Button>
-
-        <Button x:Name="addProduct" Width="50" Margin="5" Padding="5" Grid.Row="1" Grid.Column="1"
-                    Click="addProduct_Click">
-            Add
-        </Button>
 
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
             <TextBox x:Name="productNameText" MinWidth="200"
@@ -48,6 +36,22 @@
             </Button>
         </StackPanel>
 
+        <!--add product-->
+        <TextBlock Grid.Row="0" Grid.Column="1" Margin="50 0 50 0"
+                   Text="Add Product"  FontSize="28"/>
+
+        <Button x:Name="addProduct" Width="50" Margin="5" Padding="5" Grid.Row="1" Grid.Column="1"
+                    Click="addProduct_Click">
+            Add
+        </Button>
+
+        <!--Back-->
+        <Button x:Name="backToMainWindow" Width="50" Margin="5" Padding="5" Grid.Row="0" Grid.Column="4"
+                    Click="backToMainWindow_Click">
+            Back
+        </Button>
+ 
+        <!--list of results for search products-->
         <ListBox x:Name="resultsList" Grid.Row="2" Grid.Column="0"
                  Margin="5 20 5 5" ItemsSource="{Binding}" MaxHeight="300"
                  ScrollViewer.VerticalScrollBarVisibility="Auto">
