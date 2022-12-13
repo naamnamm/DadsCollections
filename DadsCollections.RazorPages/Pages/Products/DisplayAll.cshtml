@@ -3,33 +3,37 @@
 @{
 }
 
-<h1>Shop - Display All Products</h1>
+<h1>Products</h1>
 
-<div class="container">
+<div class="container mb-5">
     <div class="row">  
         @foreach (var product in Model.products)
         {          
            <div class="col">
-                <div class="card" style="width: 18rem;">
-                  <img class="card-img-top" src="~/images/@product.ImgName" alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title">@product.Title</h5>
-                    <p class="card-text">@product.Description</p>
+                <div class="card" style="width:auto; ">
+                  <img class="card-img-top" style="height: 20rem" src="~/images/@product.ImgName" alt="Card image cap">
 
+                  <div class="card-body" style="height: 8rem">
+                    <h5 class="card-title">@product.Title</h5>
+                    <p class="card-text" >@product.Description</p>
+                  </div>
+
+                  <div class="card-footer" style="border-top: none; background-color: white;">     
                     <form method="post">
                         <a asp-page="/Cart" asp-page-handler="AddToCart" asp-route-id="@product.Id" class="btn btn-primary">Add to Cart</a>
                         <input asp-for="SelectedProduct.Id" value="@product.Id" type="hidden" /> 
                         <input type="submit" asp-page-handler="SelectProduct" value="See Product" class="btn btn-primary" />  
                     </form>
                   </div>
+                  
                 </div> 
             </div>          
-            }
+            
         }     
     </div>
 </div>
 
-<p> @HttpContext.Session.Id</p>
+@*<p> @HttpContext.Session.Id</p>*@
     
 @*<div class="container">
     <div class="row">  
