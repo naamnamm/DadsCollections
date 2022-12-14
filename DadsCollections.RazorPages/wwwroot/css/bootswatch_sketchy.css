@@ -92,6 +92,21 @@ body {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.display-product-link {
+    text-decoration: none;
+}
+
+.main-display-selectedproduct, .product-right-sub-title {
+    display: flex;
+}
+
+
+.product-detail {
+    font-size: 22px;
+    font-family: var(--bs-font-monospace);
+}
+
+
 hr {
     margin: 1rem 0;
     color: inherit;
@@ -12906,7 +12921,7 @@ select.form-control {
 }
 
 pre {
-    border: 2px solid #333;
+    /*border: 2px solid #333;*/
     border-radius: 15px 5px 5px 25px/5px 25px 25px 5px;
 }
 

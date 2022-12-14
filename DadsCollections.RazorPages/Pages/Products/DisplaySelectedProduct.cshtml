@@ -1,13 +1,53 @@
 ﻿@page
 @model DadsCollections.RazorPages.Pages.Products.DisplaySelectedProductModel
 @{
+    ViewData["Title"] = @Model.SelectedProduct.Title;
 }
-<h1> Product Display </h1>
-<h5 class="card-title">@Model.SelectedProduct.Title</h5>
+<h1 class="mb-4"> 
+    <a class="display-product-link" asp-page="/Products/DisplayAll"> Products </a> 
+    / @Model.SelectedProduct.Title
+</h1>
+
+<div class="main-display-selectedproduct mb-5">
+    <section class="product-left w-50">
+        <img class="product-left-img w-75" src="~/images/@Model.SelectedProduct.ImgName" alt="Card image cap">
+    </section>
+
+    <section class="product-right w-50">
+
+        <div class="product-right-sub-title">
+            <div><h3>Product: </h3> </div>
+            <div><pre class="product-detail"> @Model.SelectedProduct.Title</pre></div>
+        </div>
+
+        <div class="product-right-sub-title">
+            <div><h3>Price: </h3> </div>
+            <div><pre class="product-detail"> $@String.Format("{0:#,##0.##}", @Model.SelectedProduct.Price) </pre></div>
+        </div>
+
+        <div class="product-right-sub-title">
+            <div><h3>Quantity: </h3> </div>
+            <div><pre class="product-detail"> @Model.SelectedProduct.Quantity</pre></div>
+        </div>
+        
+        <div class="product-right-description">
+            <div><h3>Description: </h3> </div>
+            <div><p class="product-detail"> @Model.SelectedProduct.Description</p></div>
+        </div>
+
+        <div class="product-right-button mt-4">
+            <a asp-page="/Cart" asp-page-handler="AddToCart" asp-route-id="@Model.SelectedProduct.Id" class="btn btn-primary">Add to Cart</a>
+        </div>
+
+    </section>
+        
+</div>
+
+@*<h5 class="card-title">@Model.SelectedProduct.Title</h5>
     <ul class="thumbnails" style="width: 18rem;">
         <img class="card-img-top" src="~/images/@Model.SelectedProduct.ImgName" alt="Card image cap">
     </ul>
 <p class="card-text">@Model.SelectedProduct.Description</p>
 
-<a asp-page="/Cart" asp-page-handler="AddToCart" asp-route-id="@Model.SelectedProduct.Id" class="btn btn-primary">Add to Cart</a>
+<a asp-page="/Cart" asp-page-handler="AddToCart" asp-route-id="@Model.SelectedProduct.Id" class="btn btn-primary">Add to Cart</a>*@
 

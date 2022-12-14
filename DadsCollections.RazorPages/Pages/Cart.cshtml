@@ -1,6 +1,7 @@
 ﻿@page
 @model DadsCollections.RazorPages.Pages.CartModel
 @{
+    ViewData["Title"] = "Cart";
 }
 
 <html>
@@ -52,7 +53,9 @@
             </tr>
         </table>
     </form>
-    <p> @HttpContext.Session.Id</p>
+
+    @*<p> @HttpContext.Session.Id</p>*@
+
     <a asp-page="/Products/DisplayAll" >Continue Shopping</a> 
     <a asp-page="/Checkout" class="btn btn-primary">Check out</a>
     }
