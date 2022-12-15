@@ -11,7 +11,7 @@
 </head>
 <body>
 
-    <h3>Cart</h3>
+    <h1 class="text-decoration-underline">Cart</h1>
 
     @if(@Model.cart is null)
     {
@@ -20,7 +20,87 @@
 
     else
     {
-    <form method="post" asp-page="cart" asp-page-handler="update">
+        <div class="cart-table my-3">
+            <form method="post" asp-page="cart" asp-page-handler="update">
+                <div class="row cart-table-header">
+                    <div class="col-6">
+                        <h2>Product</h2>
+                    </div>
+                    <div class="col-3">
+                        <h2>Quantity</h2>
+                    </div>
+                    <div class="col-3">
+                        <h2>Price</h2>
+                    </div>
+                </div>
+
+                <div class="cart-table-body-container">               
+                    @foreach (var item in Model.cart)
+                    {
+                        <div class="row cart-table-body-row d-flex my-3"> 
+                            <div class="col-6 d-flex"> 
+                                <div class="col-4">
+                                    <div class="product-detail-container">
+                                        <div></div><img src="~/images/@item.Product.ImgName" width="120" height="100" />
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="product-detail-container">
+                                        <h4> @item.Product.Title </h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-3">
+                                <div class="product-quantity-container">
+                                    <h4> @item.Product.Quantity </h4>
+                                </div>
+                            </div>
+
+                            <div class="col-3">                           
+                                <div class="text-right product-price-container">
+                                    <h4> $@String.Format("{0:#,##0.##}",item.Product.Price * item.Quantity) </h4>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                    @*<tr>
+                        <td colspan="6" align="right">Total</td>
+                        <td align="center">$@Model.Total</td>
+                    </tr>*@
+
+            </form>
+        </div>
+
+        <hr />
+
+        <div class="row cart-table-footer">
+            <div class="col-6">
+            </div>
+            <div class="col-3">
+                <h2>Total</h2>
+            </div>
+            <div class="col-3">
+                <h2> $@String.Format("{0:#,##0.##}", @Model.Total)</h2>
+            </div>
+        </div>
+
+        <hr />
+
+    <div class="my-3">
+        <div class="w-25 mx-auto">
+            <div class="w-50 mx-auto"><a asp-page="/Checkout" class="btn btn-primary">Check out</a></div>
+        </div>
+    </div>
+}
+
+</body>
+</html>
+
+@*<p> @HttpContext.Session.Id</p>*@
+@*    <form method="post" asp-page="cart" asp-page-handler="update">
         <table border="1">
             <tr>
                 <th>Action</th>
@@ -52,13 +132,4 @@
                 <td align="center">$@Model.Total</td>
             </tr>
         </table>
-    </form>
-
-    @*<p> @HttpContext.Session.Id</p>*@
-
-    <a asp-page="/Products/DisplayAll" >Continue Shopping</a> 
-    <a asp-page="/Checkout" class="btn btn-primary">Check out</a>
-    }
-
-</body>
-</html>
+    </form>*@
