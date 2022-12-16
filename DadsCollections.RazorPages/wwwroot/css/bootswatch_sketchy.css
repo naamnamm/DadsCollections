@@ -106,7 +106,9 @@ body {
     font-family: var(--bs-font-monospace);
 }
 
-
+.customer-info-container {
+    background-color: lightgray;
+}
 
 hr {
     margin: 1rem 0;
