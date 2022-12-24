@@ -54,26 +54,36 @@ namespace DadsCollections.RazorPages.Pages
 
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
 
+                Total = cart.Sum(i => i.Product.Price * i.Quantity);
                 return Page();
             }
 
-
-            int index = Exists(cart, intId);
-            if (index == -1)
+            //if the cart is not null
+            if (cart is not null)
             {
-                cart.Add(new CartItem
+                // 1. if item doesn't exist in the cart - add new item
+                int index = Exists(cart, intId);
+                if (index == -1)
                 {
-                    Product = selectedProduct,
-                    Quantity = 1
-                });
-            }
-            else
-            {
-                //display product has already been added to the cart
-                cart[index].Quantity++;
+                    cart.Add(new CartItem
+                    {
+                        Product = selectedProduct,
+                        Quantity = 1
+                    });
+                } // else Quantity += 1
+                else
+                {
+                    //display product has already been added to the cart
+                    cart[index].Quantity++;
+                }
+
+                Total = cart.Sum(i => i.Product.Price * i.Quantity);
+            
+                SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+
             }
 
-            SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+
 
             return Page();
 

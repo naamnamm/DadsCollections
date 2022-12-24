@@ -1,3 +1,4 @@
+using DadsCollections.RazorPages.Helpers;
 using DadsCollectionsLibrary.Data;
 using DadsCollectionsLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +15,10 @@ namespace DadsCollections.RazorPages.Pages.Shop
         public ProductModel SelectedProduct { get; set; }
 
         public List<ProductModel> products { get; set; }
+
+        //public List<CartItem> cart { get; set; }
+
+        //public decimal Total { get; set; }
 
         public DisplayModel(IDatabaseData db)
         {
@@ -33,13 +38,22 @@ namespace DadsCollections.RazorPages.Pages.Shop
             //{
             //    return Page();
             //}
-            
+
             products = _db.GetAllProducts();
             var selectedProduct = products.Where(x => x.Id == SelectedProduct.Id).FirstOrDefault();
 
             // sends the ID to DisplayProduct page onGet method
             return RedirectToPage("./DisplaySelectedProduct", new { Id = selectedProduct.Id });
         }
+
+        //public void OnGetAddToCart(string id)
+        //{
+        //    cart = SessionHelper.GetObjectFromJson<List<CartItem>>(HttpContext.Session, "cart");
+
+        //    if (cart is null) return;
+
+        //    Total = cart.Sum(i => i.Product.Price * i.Quantity);
+        //}
     }
 }
 

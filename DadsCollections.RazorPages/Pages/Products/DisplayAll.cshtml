@@ -10,22 +10,27 @@
     <div class="row">  
         @foreach (var product in Model.products)
         {          
-           <div class="col">
-                <div class="card" style="width:auto; ">
-                  <img class="card-img-top" style="height: 20rem" src="~/images/@product.ImgName" alt="Card image cap">
+           <div class="col my-2">
+                <div class="card" style="max-width: 15rem">
+                  <img class="card-img-top" style="height: 15rem; width: auto" src="~/images/@product.ImgName" alt="Card image cap">
 
                   <div class="card-body" style="height: 8rem">
                     <h5 class="card-title">@product.Title</h5>
                     <p class="card-text" >@product.Description</p>
                   </div>
 
-                  <div class="card-footer" style="border-top: none; background-color: white;">     
-                    <form method="post">
-                        <a asp-page="/Cart" asp-page-handler="AddToCart" asp-route-id="@product.Id" class="btn btn-primary">Add to Cart</a>
-                        <input asp-for="SelectedProduct.Id" value="@product.Id" type="hidden" /> 
-                        <input type="submit" asp-page-handler="SelectProduct" value="See Product" class="btn btn-primary" />  
-                    </form>
-                  </div>
+                  <form method="post">
+                      <div class="card-footer d-flex" style="border-top: none; background-color: white;">     
+                    
+                            <div>
+                                <a asp-page="/Cart" asp-page-handler="AddToCart" asp-route-id="@product.Id" class="btn btn-primary">Add to Cart</a>
+                                <input asp-for="SelectedProduct.Id" value="@product.Id" type="hidden" /> 
+                            </div>
+                            <div>
+                                <input type="submit" asp-page-handler="SelectProduct" value="See Product" class="btn btn-primary" />  
+                            </div>
+                      </div>
+                  </form>
                   
                 </div> 
             </div>          

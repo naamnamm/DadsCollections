@@ -12,7 +12,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DadsCollections.RazorPages"
 		{BEFE9553-66F7-4ED8-A61D-8FDD7740ED8C} = {BEFE9553-66F7-4ED8-A61D-8FDD7740ED8C}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DadsCollections.Desktop", "DadsCollections.Desktop\DadsCollections.Desktop.csproj", "{4E25A870-2D08-4EBB-99B8-63019220B662}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DadsCollections.Desktop", "DadsCollections.Desktop\DadsCollections.Desktop.csproj", "{4E25A870-2D08-4EBB-99B8-63019220B662}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
