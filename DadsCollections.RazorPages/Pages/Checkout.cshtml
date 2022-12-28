@@ -11,8 +11,6 @@
 else 
 {
 <div class="checkout-container d-flex my-4">
-
-@*customer info*@
     <div class="col-5 customer-info-container-left">
          <form method="post">
             <div class="pb-2">
@@ -39,7 +37,7 @@ else
 
     <div class="col-1"></div>
 
-@*review order*@
+
     
     <div class="col-6 review-order-container-right"> 
         <div class="row cart-table-header">
@@ -105,44 +103,4 @@ else
 }
 
 
-@*    <html>
-    <head>
-        <meta name="viewport" content="width=device-width" />
-        <title>Checkout</title>
-    </head>
-    <body>
-
-        <h3>Check Out</h3>
-            <table border="1">
-                <tr>
-                    <th>Action</th>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Photo</th>
-                    <th>Price</th>
-                    <th>Quantity <input type="submit" value="Update" /></th>
-                    <th>Sub Total</th>
-                </tr>
-                @foreach (var item in Model.cart)
-                {
-                    <tr align="center">
-                        <td align="center">
-                            <a asp-page="cart" asp-page-handler="delete" asp-route-id="@item.Product.Id">X</a>
-                        </td>
-                        <td>@item.Product.Id</td>
-                        <td>@item.Product.Title</td>
-                        <td><img src="~/images/@item.Product.ImgName" width="120" height="100" /></td>
-                        <td>$@item.Product.Price</td>
-                        <td><input type="number" name="quantities" value="@item.Quantity" min="1" style="width: 50px;" /></td>
-                        <td>
-                            $@(item.Product.Price * item.Quantity)
-                        </td>
-                    </tr>
-                }
-                <tr>
-                    <td colspan="6" align="right">Total</td>
-                    <td align="center">$@Model.Total</td>
-                </tr>
-            </table>
-        </body>
-    </html>*@
+ 

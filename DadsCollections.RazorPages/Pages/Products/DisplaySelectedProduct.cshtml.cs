@@ -25,7 +25,6 @@ namespace DadsCollections.RazorPages.Pages.Products
         public void OnGet()
         {
             SelectedProduct = _db.SearchProduct(Id).FirstOrDefault();
-
         }
 
     }

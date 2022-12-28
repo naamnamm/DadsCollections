@@ -14,6 +14,8 @@ namespace DadsCollections.RazorPages.Pages
 
         public decimal Total { get; set; }
 
+        public string Message { get; set; } = String.Empty;
+
         public List<ProductModel> products { get; set; }
 
         public CartModel(IDatabaseData db)
@@ -23,11 +25,9 @@ namespace DadsCollections.RazorPages.Pages
 
         public void OnGet()
         {
-            // need to create a check to see if cart is empty
-
             cart = SessionHelper.GetObjectFromJson<List<CartItem>>(HttpContext.Session, "cart");
 
-            if (cart is null) return;
+            if (cart is null || cart.Count == 0) return;
 
             Total = cart.Sum(i => i.Product.Price * i.Quantity);
         }
@@ -42,7 +42,7 @@ namespace DadsCollections.RazorPages.Pages
 
             cart = SessionHelper.GetObjectFromJson<List<CartItem>>(HttpContext.Session, "cart");
 
-            if (cart == null)
+            if (cart is null)
             {
                 cart = new List<CartItem>();
 
@@ -58,10 +58,8 @@ namespace DadsCollections.RazorPages.Pages
                 return Page();
             }
 
-            //if the cart is not null
             if (cart is not null)
             {
-                // 1. if item doesn't exist in the cart - add new item
                 int index = Exists(cart, intId);
                 if (index == -1)
                 {
@@ -70,23 +68,18 @@ namespace DadsCollections.RazorPages.Pages
                         Product = selectedProduct,
                         Quantity = 1
                     });
-                } // else Quantity += 1
+                } 
                 else
                 {
-                    //display product has already been added to the cart
-                    cart[index].Quantity++;
+                    Message = "The selected product is already in the cart.";
                 }
 
                 Total = cart.Sum(i => i.Product.Price * i.Quantity);
             
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
-
             }
 
-
-
             return Page();
-
         }
 
         private int Exists(List<CartItem> cart, int id)
@@ -99,6 +92,32 @@ namespace DadsCollections.RazorPages.Pages
                 }
             }
             return -1;
+        }
+
+        public void OnGetRemoveItemFromCart(string id)
+        {
+            cart = SessionHelper.GetObjectFromJson<List<CartItem>>(HttpContext.Session, "cart");
+
+            if (cart is null)
+            {
+                return;
+            }
+
+            int intId;
+            Int32.TryParse(id, out intId);
+
+            int index = Exists(cart, intId);
+
+            cart.RemoveAt(index);
+
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+
+            if (cart.Count == 0)
+            {
+                return;
+            }
+
+            Total = cart.Sum(i => i.Product.Price * i.Quantity);
         }
     }
 }
