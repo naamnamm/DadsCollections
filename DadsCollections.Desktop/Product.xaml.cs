@@ -25,6 +25,9 @@ namespace DadsCollections.Desktop
         private readonly IDatabaseData _db;
 
         private OrderFullModel _data = null;
+
+        public string ProductCatagoryText { get; private set; }
+
         public Product(IDatabaseData db)
         {
             InitializeComponent();
@@ -47,11 +50,13 @@ namespace DadsCollections.Desktop
 
         }
 
-        private void searchForProduct_Click(object sender, RoutedEventArgs e)
+
+        private void getProducts_Click(object sender, RoutedEventArgs e)
         {
-            
+            ProductCatagoryText = ((Button)e.Source).Content.ToString();
+
+            List<ProductModel> products = _db.GetProductsByCatagory(ProductCatagoryText);
+            resultsList.ItemsSource = products;
         }
-
-
     }
 }

@@ -23,17 +23,32 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <!--search products-->
+        <!--get products by catagories-->
         <TextBlock Grid.Row="0" Grid.Column="0" 
-                   Text="Search for Product"  FontSize="28"/>
+                   Text="Get Products by Catagories"  FontSize="28"/>
 
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
-            <TextBox x:Name="productNameText" MinWidth="200"
-                     Margin="5"/>
-            <Button x:Name="searchForProduct" Margin="5" Padding="5"
-                    Click="searchForProduct_Click">
-                Search
+
+            <Button x:Name="Watches" Margin="5" Padding="5"
+                    Click="getProducts_Click">
+                Watches
             </Button>
+
+            <Button x:Name="Jewelries" Margin="5" Padding="5"
+                    Click="getProducts_Click">
+                Jewelries
+            </Button>
+
+            <Button x:Name="Ceramics" Margin="5" Padding="5"
+                    Click="getProducts_Click">
+                Ceramics
+            </Button>
+
+            <Button x:Name="OtherAntiques" Margin="5" Padding="5"
+                    Click="getProducts_Click">
+                Other Antiques
+            </Button>
+
         </StackPanel>
 
         <!--add product-->
@@ -72,32 +87,30 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Orientation="Horizontal" Grid.Row="0">
-                            <TextBlock FontWeight="Bold" Margin="5">Order Id:</TextBlock>
+                            <TextBlock FontWeight="Bold" Margin="5">Product Id:</TextBlock>
                             <TextBlock Text="{Binding Id}" Margin="5" />
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Grid.Row="1">
-                            <TextBlock FontWeight="Bold" Margin="5">Customer:</TextBlock>
-                            <TextBlock Text="{Binding FirstName}" Margin="5" />
-                            <TextBlock Text="{Binding LastName}" Margin="5" />
+                            <TextBlock FontWeight="Bold" Margin="5">Title:</TextBlock>
+                            <TextBlock Text="{Binding Title}" Margin="5" />
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Grid.Row="2">
-                            <TextBlock FontWeight="Bold" Margin="5">Order Date:</TextBlock>
-                            <TextBlock Text="{Binding CreatedDate}" Margin="5" />
+                            <TextBlock FontWeight="Bold" Margin="5">Description:</TextBlock>
+                            <TextBlock Text="{Binding Description}" Margin="5" />
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Grid.Row="3">
-                            <TextBlock FontWeight="Bold" Margin="5">Status:</TextBlock>
-                            <TextBlock Text="{Binding Status}" Margin="5" />
+                            <TextBlock FontWeight="Bold" Margin="5">Quantity:</TextBlock>
+                            <TextBlock Text="{Binding Quantity}" Margin="5" />
                         </StackPanel>
 
+                        <StackPanel Orientation="Horizontal" Grid.Row="4">
+                            <TextBlock FontWeight="Bold" Margin="5">Is Sold:</TextBlock>
+                            <TextBlock Text="{Binding IsSold}" Margin="5" />
+                        </StackPanel>
 
-                        <Button Margin="5" Padding="10" Grid.Row="0" Grid.Column="1" 
-                                Grid.RowSpan="4" VerticalAlignment="Center"
-                                >
-                            View
-                        </Button>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

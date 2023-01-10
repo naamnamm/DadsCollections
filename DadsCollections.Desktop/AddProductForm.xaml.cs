@@ -21,22 +21,7 @@ namespace DadsCollections.Desktop
     /// </summary>
     public partial class AddProductForm : Window
     {
-
-        // need to show blank input 
-        //insert into dbo.Products(Title, [Description], Price, Quantity, ProductTypeId, ImgName)
-        //values(@title, @description, @price, @quantity, @productTypeId, @imgName)
-
-        // pull ProductTypeId from DB
-        // show as a list
-
-        // submit Product model when click submit 
-
-
-
-        //isSold
         private readonly IDatabaseData _db;
-
-        private ProductModel _addedProduct;
 
         public AddProductForm(IDatabaseData db)
         {
@@ -48,14 +33,6 @@ namespace DadsCollections.Desktop
         {
             var addedProduct = new ProductModel();
 
-            //grab input value
-            //_addedProduct.Title = titleText.Text;
-            //_addedProduct.Description = descriptionText.Text;
-            //_addedProduct.Price = Convert.ToDecimal(priceText.Text);
-            //_addedProduct.Quantity = Int32.Parse(quantityText.Text);
-            //_addedProduct.ImgName = imgNameText.Text;
-            //_addedProduct.ProductTypeId = Int32.Parse(productTypeText.Text);
-
             addedProduct.Title = titleText.Text;
             addedProduct.Description = descriptionText.Text;
             addedProduct.Price = Convert.ToDecimal(priceText.Text);
@@ -65,7 +42,7 @@ namespace DadsCollections.Desktop
 
             _db.CreateProducts(addedProduct);
 
-            //if successfully added - set input text to blank and show success msg
+            this.Close();
         }
     }
 }

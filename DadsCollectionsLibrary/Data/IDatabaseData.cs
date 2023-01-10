@@ -8,6 +8,7 @@ namespace DadsCollectionsLibrary.Data
         int CreateProducts(ProductModel Product);
         List<ProductModel> GetAllProducts();
         List<ProductModel> GetAvailableProducts();
+        List<ProductModel> GetProductsByCatagory(string productCatagoryTitle);
         List<OrderFullModel> SearchOrdersByEmail(string email);
         List<OrderFullModel> SearchOrdersById(int Id);
         List<ProductModel> SearchProduct(int productId);

@@ -79,6 +79,7 @@
     <Build Include="dbo\StoredProcedures\spProducts_Update.sql" />
     <Build Include="dbo\StoredProcedures\spProducts_Search.sql" />
     <Build Include="dbo\StoredProcedures\spOrders_SearchById.sql" />
+    <Build Include="dbo\StoredProcedures\spProducts_GetProductsByProductType.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="DadsCollectionsDB.refactorlog" />

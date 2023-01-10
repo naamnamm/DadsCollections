@@ -12,6 +12,7 @@ namespace DadsCollectionsLibrary.Data
 {
     public class SqlData : IDatabaseData
     {
+
         private readonly ISqlDataAccess _db;
         private const string connectionStringName = "SqlDB";
 
@@ -40,7 +41,7 @@ namespace DadsCollectionsLibrary.Data
                 _db.SaveData("dbo.spOrderProducts_Insert", new { ProductId = orderProductId, OrderId = order.Id }, connectionStringName, true);
             }
 
-            return order.Id; 
+            return order.Id;
         }
 
         public List<OrderFullModel> SearchOrdersByEmail(string email) // search order from destop application
@@ -102,6 +103,11 @@ namespace DadsCollectionsLibrary.Data
             return product.Id;
         }
 
+
+        public List<ProductModel> GetProductsByCatagory(string productCatagoryTitle)
+        {
+            return _db.LoadData<ProductModel, dynamic>("dbo.spProducts_GetProductsByProductType", new { productTypeTitle = productCatagoryTitle }, connectionStringName, true);
+        }
     }
 }
 

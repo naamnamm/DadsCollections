@@ -24,9 +24,6 @@ namespace DadsCollections.Desktop
     {
         private readonly IDatabaseData _db;
 
-        private OrderFullModel _data = null;
-        private string StatusText { get; set; }
-
         public Order(IDatabaseData db)
         {
             InitializeComponent();
@@ -40,25 +37,20 @@ namespace DadsCollections.Desktop
 
         private void viewOrder_Click(object sender, RoutedEventArgs e)
         {
-
             var orderForm = App.serviceProvider.GetService<OrderForm>();
             var model = (OrderFullModel)((Button)e.Source).DataContext;
-            //send id to order form
 
             orderForm.PopulateCheckInInfo(model);
-            //search order (id)
-            orderForm.Show();
 
+            orderForm.Show();
         }
 
         private void backToMainWindow_Click(object sender, RoutedEventArgs e)
         {
-
             var mainWindow = App.serviceProvider.GetService<MainWindow>();
 
             mainWindow.Show();
             this.Close();
-
         }
         
     }

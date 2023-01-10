@@ -39,3 +39,27 @@ select [o].[Id], [o].[CustomerId], [o].[CreatedDate], [o].[Status], [o].[TotalCo
 	inner join dbo.Products p on p.id = op.ProductId
 
 	where c.Email = 'faith.jones@gmail.com'
+	
+	
+--search for order by lastname
+declare @lastName nvarchar(50);
+
+set @lastName = 'namm';
+
+	select [o].[Id], [o].[CustomerId], [o].[CreatedDate], [o].[Status], [o].[TotalCost], [o].[orderProductIdList], 
+		[c].[FirstName], [c].[LastName], [c].[Email] 
+	from dbo.Orders o
+
+	inner join dbo.Customers c on c.Id = o.CustomerID 
+
+	where c.LastName = @lastName;
+	
+	
+--Get products by catagory
+
+select [p].[Id], [p].Title, [p].[Description], [p].[Price], [p].[Quantity], [p].[IsSold], [p].[ProductTypeId] , [pt].[Title]
+	from dbo.Products p
+
+	inner join dbo.ProductTypes pt on pt.Id = p.ProductTypeId 
+
+	where pt.Title = 'Ceramics';
