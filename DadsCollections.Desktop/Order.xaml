@@ -22,9 +22,9 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="0" Grid.Column="0" 
-                   Text="Search for Order"  FontSize="28"/>
+                   Text="Search Order by Customer Email"  FontSize="28"/>
 
-        <Button x:Name="backToMainWindow" Margin="5" Padding="5" Grid.Row="0" Grid.Column="2"
+        <Button x:Name="backToMainWindow" Margin="15 5" Padding="15 5" Grid.Row="0" Grid.Column="2"
                     Click="backToMainWindow_Click">
             Back
         </Button>
