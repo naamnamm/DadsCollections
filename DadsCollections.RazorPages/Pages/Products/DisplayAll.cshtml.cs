@@ -29,11 +29,6 @@ namespace DadsCollections.RazorPages.Pages.Shop
 
         public IActionResult OnPostSelectProduct()
         {
-            //if (ModelState.IsValid == false)
-            //{
-            //    return Page();
-            //}
-
             products = _db.GetAllProducts();
             var selectedProduct = products.Where(x => x.Id == SelectedProduct.Id).FirstOrDefault();
 

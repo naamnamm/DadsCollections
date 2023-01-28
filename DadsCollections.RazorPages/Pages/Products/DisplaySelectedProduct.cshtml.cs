@@ -12,7 +12,7 @@ namespace DadsCollections.RazorPages.Pages.Products
 
         private readonly IDatabaseData _db;
 
-        [BindProperty(SupportsGet = true)] //id as part of the url
+        [BindProperty(SupportsGet = true)]
         public int Id { get; set; }
 
         public ProductModel SelectedProduct { get; set; }

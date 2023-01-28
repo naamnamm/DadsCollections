@@ -36,10 +36,3 @@ app.MapRazorPages();
 app.Run();
 
 
-
-
-//learning resources
-//https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore31RazorPages
-//https://www.mikesdotnetting.com/article/210/razor-web-pages-e-commerce-adding-a-shopping-cart-to-the-bakery-template-site
-//https://learningprogramming.net/net/asp-net-core-razor-pages/build-shopping-cart-with-session-in-asp-net-core-razor-pages/
-
