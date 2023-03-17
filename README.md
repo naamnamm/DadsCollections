@@ -5,8 +5,8 @@ A mini e-commerce App with C#.
 View Application on [Azure](https://dadscollection.azurewebsites.net/)
 
 <img src="https://user-images.githubusercontent.com/53867191/225928593-c70c6829-c0e9-4ec5-9e41-752152cc644d.png" />
-
 <img src="https://user-images.githubusercontent.com/53867191/225928728-bd2a5690-d10d-4674-a513-f8f420e5d646.png" />
+<img src="https://user-images.githubusercontent.com/53867191/226069739-31c78d53-135a-4939-846c-7b3364968132.png" />
 
 ## Summary
 
