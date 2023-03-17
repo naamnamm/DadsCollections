@@ -21,19 +21,19 @@ end
 
 if not exists (select 1 from dbo.products)
 begin
-    declare @roomId1 int;
-    declare @roomId2 int;
-    declare @roomId3 int;
-    declare @roomId4 int;
+    declare @productTypeId1 int;
+    declare @productTypeId2 int;
+    declare @productTypeId3 int;
+    declare @productTypeId4 int;
 
-    select @roomId1 = Id from dbo.ProductTypes where Title = 'Ceramics';
-    select @roomId2 = Id from dbo.ProductTypes where Title = 'Jewelries';
-    select @roomId3 = Id from dbo.ProductTypes where Title = 'Watches';
-    select @roomId4 = Id from dbo.ProductTypes where Title = 'Other Antiques';
+    select @productTypeId1 = Id from dbo.ProductTypes where Title = 'Ceramics';
+    select @productTypeId2 = Id from dbo.ProductTypes where Title = 'Jewelries';
+    select @productTypeId3 = Id from dbo.ProductTypes where Title = 'Watches';
+    select @productTypeId4 = Id from dbo.ProductTypes where Title = 'Other Antiques';
 
     Insert into dbo.Products(Title, [Description], Price, Quantity, ProductTypeId, ImgName)
-    values ('Black Ceramic Bowl', 'An antique black ceramic bowl made of sustainable material.', 50, 1, @roomId1, 'Ceramics001.jpg', 0, 0),
-    ('Diamond White Gold Ring', 'A half karat diamond on a 10k gold necklace', 1500, 1, @roomId2, 'Jewelries001.jpg', 0, 0),
-    ('Stainless Rolex', 'A Stainless dial watch with black leather arm', 1000, 1, @roomId3, 'Watches001.jpg', 0, 0),
-    ('Antique Lamp', 'An antique lamp made in the 19th century', 200, 1, @roomId4, 'OtherAntiques001.jpg', 0, 0);
+    values ('Black Ceramic Bowl', 'An antique black ceramic bowl made of sustainable material.', 50, 1, @productTypeId1, 'Ceramics001.jpg', 0, 0),
+    ('Diamond White Gold Ring', 'A half karat diamond on a 10k gold necklace', 1500, 1, @productTypeId2, 'Jewelries001.jpg', 0, 0),
+    ('Stainless Rolex', 'A Stainless dial watch with black leather arm', 1000, 1, @productTypeId3, 'Watches001.jpg', 0, 0),
+    ('Antique Lamp', 'An antique lamp made in the 19th century', 200, 1, @productTypeId4, 'OtherAntiques001.jpg', 0, 0);
 end
