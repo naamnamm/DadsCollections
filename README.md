@@ -39,7 +39,7 @@ From my previous console application, I’m taking this C# app to a whole new leve
 - Backend - [.NET Core Class Library](https://learn.microsoft.com/en-us/dotnet/core/tutorials/library-with-visual-studio?pivots=dotnet-7-0)
     - Models 
     -	Data Access class (Business Logic – UI talks directly to this class)
-    -	DB Access class with Dapper (Query data from and Save data to DB)
+    -	DB Access class with [Dapper](https://github.com/DapperLib/Dapper) (Query data from and Save data to DB)
 - Database
     - Server: SQL (local DB for development and Azure SQL for production)
     - Class Library with Data tables & Stored Procedures
